@@ -12,5 +12,6 @@
     --color-orange-700: hsl(7, 71%, 60%);
     --color-upload-avatar: rgba(75, 72, 106, 0.25);
     --color-upload-icon: rgba(75, 72, 106, 0.35);
+    --color-upload-hover: #37344F;
+    --color-upload-focus: rgba(135, 132, 164, 0.4);
 }
-
