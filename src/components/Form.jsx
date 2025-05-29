@@ -16,7 +16,7 @@ export default function Form() {
         github: ""
     })
 
-    const MAX_FILE_SIZE = 500 * 1024 // 500KB
+    const MAX_FILE_SIZE = 500 * 1024 
 
     const handleFile = (selectedFile) => {
         if (!selectedFile) return
@@ -92,13 +92,13 @@ export default function Form() {
     return (
         <form className="px-5" onSubmit={handleSubmit}>
             <div onClick={!file ? triggerFileInput : undefined} onDrop={handleDrop} onDragOver={(e) => e.preventDefault()} className="w-full my-8 cursor-pointer group">
-                <div tabIndex={0} className="flex flex-col items-center border border-dashed border-neutral-700 bg-upload-avatar p-6 rounded-xl group-hover:bg-upload-hover group-hover:border-neutral-500 focus:outline-offset-3 focus:outline-upload-focus transition">
+                <div className="flex flex-col items-center border border-dashed border-neutral-700 bg-upload-avatar p-6 rounded-xl group-hover:bg-upload-hover group-hover:border-neutral-500 focus:outline-offset-3 focus:outline-upload-focus transition">
                     {previewUrl ? (
                         <>
-                            <img src={previewUrl} alt="preview" className="w-12 h-12 object-cover rounded-xl mb-2 border-1 border-neutral-700"/>
-                            <div className="flex gap-4">
-                                <button type="button" onClick={handleRemove} className="text-sm text-red-600 underline">Remove Image</button>
-                                <button type="button" onClick={triggerFileInput} className="text-sm text-blue-600 underline">Change Image</button>
+                            <img src={previewUrl} alt="preview" className="w-16 h-16 object-cover rounded-xl mb-2 border-2 border-neutral-700"/>
+                            <div className="flex gap-4 mt-4 text-neutral-0">
+                                <button type="button" onClick={handleRemove} className="text-sm underline bg-upload-icon px-3 py-1 rounded">Remove Image</button>
+                                <button type="button" onClick={triggerFileInput} className="text-sm bg-upload-icon px-3 py-1 rounded">Change Image</button>
                             </div>
                         </>
                     ) : (
@@ -119,8 +119,8 @@ export default function Form() {
             <input type="text" name="fName" id="fName" className={`bg-upload-avatar border ${errors.fullName ? 'border-orange-700' : 'border-neutral-500'} rounded-xl w-full p-3 cursor-pointer hover:bg-upload-hover focus:outline-offset-3 focus:outline-upload-focus`} onChange={(event) => updateFormData({fullName: event.target.value})}/>
             {errors.fullName && 
                 <p className="flex items-center gap-2 text-xs mt-2 -mb-1 text-orange-700">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/><path fill="#D1D0D5" d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M8.004 10.462V7.596M8 5.569v-.042"/></svg>
-                {errors.fullName}   
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/><path fill="#D1D0D5" d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M8.004 10.462V7.596M8 5.569v-.042"/></svg>
+                    {errors.fullName}   
                 </p>
             }
 
@@ -128,8 +128,8 @@ export default function Form() {
             <input type="email" name="email" id="email" placeholder="example@email.com" className={`bg-upload-avatar border ${errors.email ? 'border-orange-700' : 'border-neutral-500'} rounded-xl w-full p-3 placeholder:text-neutral-300 cursor-pointer hover:bg-upload-hover focus:outline-offset-3 focus:outline-upload-focus`} onChange={(event) => updateFormData({email: event.target.value})}/>
             {errors.email && 
                 <p className="flex items-center gap-2 text-xs mt-2 -mb-1 text-orange-700">  
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/><path fill="#D1D0D5" d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M8.004 10.462V7.596M8 5.569v-.042"/></svg>
-                {errors.email}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/><path fill="#D1D0D5" d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M8.004 10.462V7.596M8 5.569v-.042"/></svg>
+                    {errors.email}
                 </p>
             }
 
@@ -137,12 +137,12 @@ export default function Form() {
             <input type="text" name="github" id="github" placeholder="@yourusername" className={`bg-upload-avatar border ${errors.github ? 'border-orange-700' : 'border-neutral-500'} rounded-xl w-full p-3 placeholder:text-neutral-300 cursor-pointer hover:bg-upload-hover focus:outline-offset-3 focus:outline-upload-focus`} onChange={(event) => updateFormData({github: event.target.value})}/>
             {errors.github &&
                 <p className="flex items-center gap-2 text-xs mt-2 -mb-1 text-orange-700">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/><path fill="#D1D0D5" d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M8.004 10.462V7.596M8 5.569v-.042"/></svg>
-                {errors.github}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/><path fill="#D1D0D5" d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M8.004 10.462V7.596M8 5.569v-.042"/></svg>
+                    {errors.github}
                 </p>
             }
 
-            <button type="submit" className="block w-full bg-orange-700 hover:border-b-4 hover:border-orange-500 transition-all cursor-pointer p-3 rounded-xl text-xl text-neutral-900 font-extrabold mt-6 mb-32 focus:outline-offset-3 focus:outline-neutral-300">Generate My Ticket</button>
+            <button type="submit" className="block w-full bg-orange-700 hover:border-b-4 hover:border-orange-500 transition-all cursor-pointer p-3 rounded-xl text-xl text-neutral-900 font-extrabold mt-12 mb-32 focus:outline-offset-3 focus:outline-neutral-300">Generate My Ticket</button>
         </form>
     )
 }
