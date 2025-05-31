@@ -1,4 +1,5 @@
 import { useRef, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function Form() {
     const fileInputRef = useRef(null)
@@ -15,6 +16,7 @@ export default function Form() {
         email: "",
         github: ""
     })
+    const navigate = useNavigate()
 
     const MAX_FILE_SIZE = 500 * 1024 
 
@@ -85,7 +87,7 @@ export default function Form() {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (validate()) {
-            console.log('Valid')
+            navigate('/ticketpage')
         }
     }
 
