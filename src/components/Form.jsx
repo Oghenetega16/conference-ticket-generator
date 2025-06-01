@@ -1,10 +1,10 @@
 import { useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-export default function Form() {
+export default function Form({ previewUrl, setPreviewUrl }) {
     const fileInputRef = useRef(null)
     const [file, setFile] = useState(null)
-    const [previewUrl, setPreviewUrl] = useState("")
+    
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
