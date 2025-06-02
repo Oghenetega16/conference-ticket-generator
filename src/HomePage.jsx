@@ -3,11 +3,29 @@ import Header from './components/Header'
 
 export default function HomePage() {
     return (
-        <main className="font-display grid place-items-center min-h-screen text-neutral-0 bg-[url('../assets/images/background-mobile.png')] bg-no-repeat bg-cover">
-            <div className="bg-[url('../assets/images/pattern-lines.svg')] bg-no-repeat bg-cover">
-                <Header />
-                <Form />
-            </div>
+        <main
+            className="relative font-display grid place-items-center min-h-screen text-neutral-0"
+            style={{
+                backgroundImage: `
+                url('/assets/images/pattern-lines.svg'),
+                url('/assets/images/pattern-circle.svg'),
+                url('/assets/images/pattern-squiggly-line-top.svg'),
+                url('/assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg'),
+                url('/assets/images/background-mobile.png')
+                `,
+                backgroundPosition: `
+                center center,
+                -1rem -2rem,
+                16rem 1rem,
+                bottom left,
+                center center
+                `,
+                backgroundRepeat: 'no-repeat, no-repeat, no-repeat, no-repeat no-repeat',
+                backgroundSize: 'cover, 7rem, 8rem, 21rem, auto'
+            }}
+            >
+            <Header />
+            <Form />
         </main>
     )
 }
