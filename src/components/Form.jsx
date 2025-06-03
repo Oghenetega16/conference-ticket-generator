@@ -1,21 +1,17 @@
 import { useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-export default function Form() {
+export default function Form({ formData, setFormData, previewUrl, setPreviewUrl }) {
     const fileInputRef = useRef(null)
     const [file, setFile] = useState(null)
-    const [previewUrl, setPreviewUrl] = useState("")
-    const [formData, setFormData] = useState({
-        fullName: "",
-        email: "",
-        github: ""
-    })
+    
     const[errors, setErrors] = useState({
         image: "",
         fullName: "",
         email: "",
         github: ""
     })
+
     const navigate = useNavigate()
 
     const MAX_FILE_SIZE = 500 * 1024 
@@ -118,7 +114,7 @@ export default function Form() {
             </div>
             
             <label htmlFor="fName" className="inline-flex mb-2 text-lg">Full Name</label>
-            <input type="text" name="fName" id="fName" className={`bg-upload-avatar border ${errors.fullName ? 'border-orange-700' : 'border-neutral-500'} rounded-xl w-full p-3 cursor-pointer hover:bg-upload-hover focus:outline-offset-3 focus:outline-upload-focus`} onChange={(event) => updateFormData({fullName: event.target.value})}/>
+            <input type="text" name="fName" id="fName" value={formData.fullName || ""} className={`bg-upload-avatar border ${errors.fullName ? 'border-orange-700' : 'border-neutral-500'} rounded-xl w-full p-3 cursor-pointer hover:bg-upload-hover focus:outline-offset-3 focus:outline-upload-focus`} onChange={(event) => updateFormData({fullName: event.target.value})}/>
             {errors.fullName && 
                 <p className="flex items-center gap-2 text-xs mt-2 -mb-1 text-orange-700">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/><path fill="#D1D0D5" d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M8.004 10.462V7.596M8 5.569v-.042"/></svg>
@@ -127,7 +123,7 @@ export default function Form() {
             }
 
             <label htmlFor="email" className="inline-flex mb-2 mt-6 text-lg">Email Address</label>
-            <input type="email" name="email" id="email" placeholder="example@email.com" className={`bg-upload-avatar border ${errors.email ? 'border-orange-700' : 'border-neutral-500'} rounded-xl w-full p-3 placeholder:text-neutral-300 cursor-pointer hover:bg-upload-hover focus:outline-offset-3 focus:outline-upload-focus`} onChange={(event) => updateFormData({email: event.target.value})}/>
+            <input type="email" name="email" id="email" value={formData.email || ""} placeholder="example@email.com" className={`bg-upload-avatar border ${errors.email ? 'border-orange-700' : 'border-neutral-500'} rounded-xl w-full p-3 placeholder:text-neutral-300 cursor-pointer hover:bg-upload-hover focus:outline-offset-3 focus:outline-upload-focus`} onChange={(event) => updateFormData({email: event.target.value})}/>
             {errors.email && 
                 <p className="flex items-center gap-2 text-xs mt-2 -mb-1 text-orange-700">  
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/><path fill="#D1D0D5" d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M8.004 10.462V7.596M8 5.569v-.042"/></svg>
@@ -136,7 +132,7 @@ export default function Form() {
             }
 
             <label htmlFor="github" className="inline-flex mb-2 mt-6 text-lg">GitHub Username</label>
-            <input type="text" name="github" id="github" placeholder="@yourusername" className={`bg-upload-avatar border ${errors.github ? 'border-orange-700' : 'border-neutral-500'} rounded-xl w-full p-3 placeholder:text-neutral-300 cursor-pointer hover:bg-upload-hover focus:outline-offset-3 focus:outline-upload-focus`} onChange={(event) => updateFormData({github: event.target.value})}/>
+            <input type="text" name="github" id="github" value={formData.github || ""} placeholder="@yourusername" className={`bg-upload-avatar border ${errors.github ? 'border-orange-700' : 'border-neutral-500'} rounded-xl w-full p-3 placeholder:text-neutral-300 cursor-pointer hover:bg-upload-hover focus:outline-offset-3 focus:outline-upload-focus`} onChange={(event) => updateFormData({github: event.target.value})}/>
             {errors.github &&
                 <p className="flex items-center gap-2 text-xs mt-2 -mb-1 text-orange-700">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/><path fill="#D1D0D5" d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/><path stroke={errors.email ? '#F67464' : '#D1D0D5'} stroke-linecap="round" stroke-linejoin="round" d="M8.004 10.462V7.596M8 5.569v-.042"/></svg>

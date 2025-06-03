@@ -1,7 +1,7 @@
 import Form from './components/Form'
 import Header from './components/Header'
 
-export default function HomePage() {
+export default function HomePage({ formData, setFormData, previewUrl, setPreviewUrl }) {
     return (
         <main
             className="relative font-display grid place-items-center min-h-screen text-neutral-0"
@@ -25,7 +25,7 @@ export default function HomePage() {
             }}
             >
             <Header />
-            <Form />
+            <Form formData={formData} setFormData={setFormData} previewUrl={previewUrl} setPreviewUrl={setPreviewUrl} />
         </main>
     )
 }
