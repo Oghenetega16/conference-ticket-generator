@@ -9,7 +9,6 @@ export default function TicketPage({ previewUrl, formData }) {
     }
     const currentDate = today.toLocaleDateString('en-US', options)
     
-
     function ticketNumber() {
         const num = Math.floor(Math.random() * 100000)
         return num.toString().padStart(5, '0')

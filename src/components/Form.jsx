@@ -88,7 +88,7 @@ export default function Form({ formData, setFormData, previewUrl, setPreviewUrl 
     }
 
     return (
-        <form className="px-5" onSubmit={handleSubmit}>
+        <form className="sm:w-90 md:w-100 lg:w-110 xl:w-120" onSubmit={handleSubmit}>
             <div onClick={!file ? triggerFileInput : undefined} onDrop={handleDrop} onDragOver={(e) => e.preventDefault()} className="w-full my-8 cursor-pointer group">
                 <div className="flex flex-col items-center border border-dashed border-neutral-700 bg-upload-avatar p-6 rounded-xl group-hover:bg-upload-hover group-hover:border-neutral-500 focus:outline-offset-3 focus:outline-upload-focus transition">
                     {previewUrl ? (

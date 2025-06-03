@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function Background() {
+export default function Background({ children }) {
     const [deviceType, setDeviceType] = useState('mobile')
 
     useEffect(() => {
@@ -22,15 +22,15 @@ export default function Background() {
     }, [])
 
     const bottomPattern = {
-        mobile: "./assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg",
-        tablet: "./assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg",
-        desktop: "./assets/images/pattern-squiggly-line-bottom-desktop.svg",
+        mobile: "/assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg",
+        tablet: "/assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg",
+        desktop: "/assets/images/pattern-squiggly-line-bottom-desktop.svg",
     }
 
     const background = {
-        mobile: './assets/images/background-mobile.png',
-        tablet: './assets/images/background-tablet.png',
-        desktop: '../assets/images/background-desktop.png'
+        mobile: '/assets/images/background-mobile.png',
+        tablet: '/assets/images/background-tablet.png',
+        desktop: '/assets/images/background-desktop.png'
     }
 
     const bgPositions = {
@@ -44,28 +44,27 @@ export default function Background() {
         `,
         tablet: `
             center center,
-            -1rem -2rem,
-            16rem 1rem,
-            19rem 33rem,
+            2rem -3rem,
+            right 4rem,
+            36rem 28rem,
             bottom left,
             center center
         `,
         desktop: `
             center center,
-            -1rem -2rem,
-            16rem 1rem,
-            19rem 33rem,
-            bottom left,
+            1rem -4rem,
+            right 3rem,
+            45rem 28rem,
+            left 31rem,
             center center
         `,
     }
 
     const bgSizes = {
         mobile: 'cover, 7rem, 8rem, 7rem, 21rem, cover',
-        tablet: 'cover, 7rem, 8rem, 7rem, 21rem, cover',
-        desktop: 'cover, 7rem, 8rem, 7rem, 21rem, cover'
+        tablet: 'cover, 8rem, 15rem, 8rem, 30rem, cover',
+        desktop: 'cover, 10rem, 18rem, 10rem, auto, cover'
     }
-
 
     return (
         <div 
@@ -84,6 +83,7 @@ export default function Background() {
                 backgroundSize: bgSizes[deviceType]
             }}
             >
+            {children}
         </div>
     )
 }
