@@ -55,7 +55,7 @@ export default function Background({ children }) {
             1rem -4rem,
             right 3rem,
             45rem 28rem,
-            left 31rem,
+            left bottom,
             center center
         `,
     }
