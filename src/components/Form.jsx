@@ -1,7 +1,10 @@
-import { useRef, useState } from "react"
+import { useRef, useState, useContext } from "react"
+import { UserContext } from "./UserContext";
 import { useNavigate } from "react-router-dom"
 
-export default function Form({ formData, setFormData, previewUrl, setPreviewUrl }) {
+export default function Form() {
+    const { formData, setFormData, previewUrl, setPreviewUrl } = useContext(UserContext);
+    
     const fileInputRef = useRef(null)
     const [file, setFile] = useState(null)
     
@@ -101,8 +104,8 @@ export default function Form({ formData, setFormData, previewUrl, setPreviewUrl 
                         </>
                     ) : (
                         <>
-                        <img src="./assets/images/icon-upload.svg" alt="upload icon" className="w-12 h-12 mb-2 border-1 border-neutral-700 bg-upload-icon p-3 rounded-xl my-2 group-hover:bg-upload-icon group-hover:border-neutral-500"/>
-                        <span>Drag and drop or click to upload</span>
+                            <img src="./assets/images/icon-upload.svg" alt="upload icon" className="w-12 h-12 mb-2 border-1 border-neutral-700 bg-upload-icon p-3 rounded-xl my-2 group-hover:bg-upload-icon group-hover:border-neutral-500"/>
+                            <span>Drag and drop or click to upload</span>
                         </>
                     )}
                     <input type="file" accept="image/jpeg,image/png" ref={fileInputRef} onChange={handleChange} className="hidden"/>

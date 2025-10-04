@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
+import { UserContext } from './components/UserContext'
 import HomePage from './HomePage'
 import TicketPage from './TicketPage'
 
@@ -8,16 +9,18 @@ export default function App() {
         fullName: "",
         email: "",
         github: ""
-  })
-  const [previewUrl, setPreviewUrl] = useState("")
+    })
+    const [previewUrl, setPreviewUrl] = useState("")
 
     return (
-          <Router>
-              <Routes>
-                  <Route path="/" element={<HomePage formData={formData} setFormData={setFormData} previewUrl={previewUrl} setPreviewUrl={setPreviewUrl} />} />
-                  <Route path="/ticketpage" element={<TicketPage formData={formData} setFormData={setFormData} previewUrl={previewUrl} setPreviewUrl={setPreviewUrl} />} />
-              </Routes>
-          </Router>
+        <Router>
+            <Routes>
+                <UserContext.Provider value={{formData, setFormData, previewUrl, setPreviewUrl}}>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/ticketpage" element={<TicketPage />} />
+                </UserContext.Provider>
+            </Routes>
+        </Router>
     )
 }
 
